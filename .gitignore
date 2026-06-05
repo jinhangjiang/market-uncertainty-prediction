@@ -1,8 +1,14 @@
-# Data (large files)
+# Data (large files — keep Reddit and processed outputs ignored)
 data/raw/reddit/
 data/processed/
 data/eui/
 outputs/
+
+# Track the two small static datasets
+!data/StackExchange_.csv
+!data/bogleheads_.csv
+!data/raw/StackExchange_.csv
+!data/raw/bogleheads_.csv
 
 # GDCM repo (cloned at runtime)
 gdcm/
