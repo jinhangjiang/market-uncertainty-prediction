@@ -1,0 +1,41 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+
+type: command
+experiment_name: eui-revision
+display_name: eui-revision-full-run
+
+description: >
+  EUI Prediction Pipeline (JAIS Revision) - Full GPU run on H100.
+  Runs GDCM topic modeling, NeuralForecast (LSTM/TFT/TimeXer),
+  SHAP interpretation, and HTML report generation.
+
+compute: azureml:h100-cluster
+
+environment:
+  build:
+    path: .
+    dockerfile_path: cloud/environment.dockerfile
+
+code: .
+
+command: >
+  bash run_pipeline.sh ${{inputs.dataset}} full
+
+inputs:
+  dataset:
+    type: string
+    default: all
+
+outputs:
+  outputs_dir:
+    type: uri_folder
+    mode: rw_mount
+    path: azureml://datastores/workspaceblobstore/paths/eui-revision/outputs
+
+environment_variables:
+  OUTPUTS_DIR: ${{outputs.outputs_dir}}
+  PYTHONUNBUFFERED: "1"
+
+resources:
+  instance_type: Standard_NC96ads_H100_v5
+  instance_count: 1

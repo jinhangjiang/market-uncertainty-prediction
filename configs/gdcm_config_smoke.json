@@ -1,0 +1,30 @@
+{
+  "dataset": "csv",
+  "gpus": [],
+  "max_threads": 1,
+  "out_dir": "outputs/gdcm_gridsearch_smoke",
+  "dataset_params": {
+    "window_size": [4],
+    "min_df": [0.05],
+    "max_df": [0.9]
+  },
+  "gdcm_params": {
+    "embed_dim": [50],
+    "nnegs": [5],
+    "nconcepts": [5, 10],
+    "lam": [10],
+    "rho": [100],
+    "eta": [10],
+    "inductive": [true],
+    "inductive_dropout": [0.0],
+    "hidden_size": [32],
+    "num_layers": [1]
+  },
+  "fit_params": {
+    "lr": [0.01],
+    "nepochs": [2],
+    "pred_only_epochs": [1],
+    "batch_size": [256],
+    "grad_clip": [1024]
+  }
+}

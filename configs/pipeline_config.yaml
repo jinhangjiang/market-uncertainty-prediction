@@ -1,0 +1,40 @@
+datasets:
+  - reddit
+  - stackexchange
+  - bogleheads
+
+common_window:
+  start: "2021-11-23"
+  end: "2022-06-25"
+
+bogleheads_full_range:
+  start: "2018-01-01"
+  end: "2022-08-31"
+
+train_windows: [30, 60, 90]
+forecast_horizon: 7
+top_k_features: 10
+lasso_alpha: auto
+
+gdcm_config: configs/gdcm_config.json
+
+eui_url: "https://www.policyuncertainty.com/media/US_Policy_Uncertainty_Data.xlsx"
+eui_column: "Equity_Mkt_Uncertainty"
+
+paths:
+  raw_reddit_raw: "data/raw/reddit/reddit_raw.csv"
+  raw_reddit_transformed: "data/raw/reddit/reddit_transformed.csv"
+  raw_stackexchange: "data/raw/StackExchange_.csv"
+  raw_bogleheads: "data/raw/bogleheads_.csv"
+  eui: "data/eui/eui_daily.csv"
+  processed: "data/processed"
+  outputs: "outputs"
+
+smoke:
+  sample_rows: 500
+  train_windows: [30]
+  forecast_horizon: 3
+  top_k_features: 5
+  gdcm_config: configs/gdcm_config_smoke.json
+  max_steps: 10
+  gdcm_epochs: 2

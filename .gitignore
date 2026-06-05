@@ -1,0 +1,38 @@
+# Data (large files)
+data/raw/reddit/
+data/processed/
+data/eui/
+outputs/
+
+# GDCM repo (cloned at runtime)
+gdcm/
+
+# Logs
+logs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Environments
+.env
+.venv
+env/
+venv/
+*.conda
+
+# Jupyter
+.ipynb_checkpoints/
+
+# AzureML secrets
+cloud/azure_config.json
+
+# OS
+.DS_Store
+Thumbs.db
