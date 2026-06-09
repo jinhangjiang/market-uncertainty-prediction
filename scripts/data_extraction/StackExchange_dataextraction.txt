@@ -1,0 +1,33 @@
+Process followed to query stackexchange for the data:
+ 
+-- Select all Posts (Questions and Answers) 
+SELECT 
+    'Post' AS SourceType,
+    Id,
+    PostTypeId, -- 1 = Question, 2 = Answer
+    ParentId,   -- If Answer, this is the Question Id
+    CreationDate,
+    Score,
+    Body AS Content,
+    Title,
+    Tags
+FROM Posts
+WHERE CreationDate BETWEEN '2021-11-23' AND '2022-06-25'
+
+UNION ALL
+
+-- Select all Comments
+SELECT 
+    'Comment' AS SourceType,
+    Id,
+    NULL AS PostTypeId,
+    PostId AS ParentId, -- The post this comment belongs to
+    CreationDate,
+    Score,
+    Text AS Content,
+    NULL AS Title,
+    NULL AS Tags
+FROM Comments
+WHERE CreationDate BETWEEN '2021-11-23' AND '2022-06-25'
+
+ORDER BY CreationDate ASC;
